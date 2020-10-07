@@ -5,6 +5,7 @@ name: CI
   push:
     branches:
       - master
+# It will run the action when pull_request and push to the master branch.
 
 jobs:
 
@@ -31,3 +32,9 @@ jobs:
         
       - name: Run Molecule Tests.
         run: molecule test
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
+          MOLECULE_DISTRO: ${{ matrix.distro }}
+        
+Now add the files, commit and push the changes.
